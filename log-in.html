@@ -241,7 +241,7 @@
       </section>
     </div>
     <script src="js/jquery.js" type="text/javascript"></script>
-    <script
+    <!-- <script
       src="js/ocera.schunk.c235d9d00b889734.js"
       type="text/javascript"
     ></script>
@@ -252,6 +252,39 @@
     <script
       src="js/ocera.765eb8bf.17ae77ea44bc298a.js"
       type="text/javascript"
-    ></script>
+    ></script> -->
+
+
+    <!-- supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+      // Replace these with your actual Supabase project details
+      const SUPABASE_URL = "https://pfppgrzhdczjkfapidkl.supabase.co";
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmcHBncnpoZGN6amtmYXBpZGtsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwMTcwMjIsImV4cCI6MjA1OTU5MzAyMn0.ds-DTPaoblnLtxihDNFE42aR1Hxk0oRf_pK7gVam03M";
+    
+      const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+      // Attach event listener to the login form
+      document.querySelector("form[data-wf-user-form-type='login']").addEventListener("submit", async function (e) {
+        e.preventDefault();
+    
+        const email = document.getElementById("wf-log-in-email").value;
+        const password = document.getElementById("wf-log-in-password").value;
+    
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+    
+        if (error) {
+          alert("Login failed: " + error.message);
+        } else {
+          alert("Login successful!");
+          // Redirect to dashboard or homepage
+          window.location.href = "/index.html";
+        }
+      });
+    </script>
+    
   </body>
 </html>
