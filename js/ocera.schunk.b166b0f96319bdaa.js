@@ -9687,7 +9687,7 @@
             id: tp,
             category: ts.GENERAL,
             name: "General error",
-            copy: "Something went wrong when adding this item to the cart.",
+            // copy: "Something went wrong when adding this item to the cart.",
             path: ["data", "commerce", tp],
           },
           CHECKOUT: {
